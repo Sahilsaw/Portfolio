@@ -35,7 +35,7 @@ export default function Projects() {
     {
       title: "Portfolio Website",
       description: "Personal portfolio website built with Next.js and Three.js",
-      image: "/portfolio-page.png?height=600&width=800",
+      image: "/Portfolio-page.png?height=600&width=800",
       tags: ["Next.js", "Three.js", "Framer Motion", "Tailwind CSS"],
       liveDemo: "https://sahilsaw.vercel.app/",
       github: "https://github.com/Sahilsaw/Portfolio",
