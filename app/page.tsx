@@ -1,4 +1,6 @@
-import Hero from "@/components/hero"
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
+import Loader from "@/components/loader"
 import Navbar from "@/components/navbar"
 import About from "@/components/about"
 import Experience from "@/components/experience"
@@ -8,13 +10,24 @@ import Skills from "@/components/skills"
 import Achievements from "@/components/achievements"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
+import Cursor from "@/components/cursor"
+
+// Dynamically import the Hero component with no SSR to allow Three.js to work
+const Hero = dynamic(() => import("@/components/hero"), {
+  ssr: false,
+  loading: () => <Loader />,
+})
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative">
+      <Cursor />
+      <div className="noise-bg"></div>
       <Navbar />
       <main>
-        <Hero />
+        <Suspense fallback={<Loader />}>
+          <Hero />
+        </Suspense>
         <About />
         <Experience />
         <Education />
