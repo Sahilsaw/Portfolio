@@ -10,7 +10,6 @@ import Skills from "@/components/skills"
 import Achievements from "@/components/achievements"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
-import Cursor from "@/components/cursor"
 
 // Dynamically import the Hero component with no SSR to allow Three.js to work
 const Hero = dynamic(() => import("@/components/hero"), {
@@ -21,7 +20,6 @@ const Hero = dynamic(() => import("@/components/hero"), {
 export default function Home() {
   return (
     <div className="relative">
-      <Cursor />
       <div className="noise-bg"></div>
       <Navbar />
       <main>

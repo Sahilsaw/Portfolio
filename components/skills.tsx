@@ -233,7 +233,7 @@ export default function Skills() {
             </motion.div>
           </div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -242,7 +242,7 @@ export default function Skills() {
           >
             <h3 className="text-xl font-bold mb-4 text-center">Skills Network</h3>
             <canvas ref={canvasRef} className="w-full h-full" />
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </section>
