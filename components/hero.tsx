@@ -71,13 +71,7 @@ export default function Hero() {
         >
           Sahil Saw
         </motion.h1>
-
-        <motion.p
-          className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
+        
         <motion.div
           className="text-xl md:text-2xl mb-6 text-foreground/80 h-8"
           initial={{ opacity: 0 }}
@@ -87,7 +81,6 @@ export default function Hero() {
           {typedText}
           <span className="animate-blink">|</span>
         </motion.div>
-        </motion.p>
 
         <motion.div
           className="flex flex-wrap justify-center gap-4 mb-8"
