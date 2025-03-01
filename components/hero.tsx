@@ -6,12 +6,25 @@ import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Code2, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import * as THREE from "three"
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
-import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { FontLoader } from 'three/addons/loaders/FontLoader.js';
+
 
 export default function Hero() {
   const mountRef = useRef<HTMLDivElement>(null)
   const [isMounted, setIsMounted] = useState(false)
+  const [typedText, setTypedText] = useState("")
+  const fullText = "Software Developer & Competitive Programmer"
+
+  useEffect(() => {
+    if (typedText.length < fullText.length) {
+      const timeout = setTimeout(() => {
+        setTypedText(fullText.slice(0, typedText.length + 1))
+      }, 100)
+
+      return () => clearTimeout(timeout)
+    }
+  }, [typedText])
 
   useEffect(() => {
     setIsMounted(true)
@@ -134,9 +147,15 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1 }}
         >
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Software Developer & Competitive Programmer
-          </p>
+        <motion.div
+          className="text-xl md:text-2xl mb-6 text-foreground/80 h-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3}}
+        >
+          {typedText}
+          <span className="animate-blink">|</span>
+        </motion.div>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <Link href="https://github.com/sahilsaw" target="_blank" rel="noopener noreferrer">
