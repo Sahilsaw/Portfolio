@@ -1,14 +1,17 @@
 "use client"
 
-import { useEffect, useRef,useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Code2, ChevronDown } from "lucide-react"
+import { Github, Linkedin,ChevronDown } from "lucide-react"
 import Link from "next/link"
-import Particles from "@/components/particles"
-
 
 export default function Hero() {
+  const [typedText, setTypedText] = useState("")
+  const [currentTextIndex, setCurrentTextIndex] = useState(0)
+  const texts = ["Software Developer", "Competitive Programmer", "Full Stack Developer"]
+  const fullText = texts[currentTextIndex]
+
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -17,11 +20,6 @@ export default function Hero() {
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"])
-
-  const [typedText, setTypedText] = useState("")
-  const [currentTextIndex, setCurrentTextIndex] = useState(0)
-  const texts = ["Software Developer", "Competitive Programmer", "Full Stack Developer"]
-  const fullText = texts[currentTextIndex]
 
   useEffect(() => {
     if (typedText.length < fullText.length) {
@@ -54,27 +52,17 @@ export default function Hero() {
   }, [])
 
   return (
-    <section
-      ref={containerRef}
-      className="relative h-screen flex flex-col items-center justify-center overflow-hidden"
-      style={{
-        perspective: "1000px",
-      }}
-    >
-      {/* Particles Effect */}
-       {/* <div className="absolute inset-0 z-0">
-        <Particles className="absolute inset-0" />
-      </div> */}
-
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden">
+      
       {/* Grid Background */}
-      {/* <div className="absolute inset-0 grid grid-cols-[repeat(20,1fr)] grid-row[repeat(20,1fr)] opacity-[0.15]">
+      <div className="absolute inset-0 grid grid-cols-[repeat(20,1fr)] grid-rows-[repeat(20,1fr)] opacity-[0.15]">
         {[...Array(400)].map((_, i) => (
           <div key={i} className="border-[0.5px] border-primary/20" />
         ))}
-      </div> */}
+      </div>
 
       {/* Geometric Decorations */}
-      {/* <motion.div
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -92,18 +80,9 @@ export default function Hero() {
             <div key={i} className="w-2 h-2 rounded-full bg-primary/20" />
           ))}
         </div>
-      </motion.div> */}
+      </motion.div>
 
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: "url('/hero-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          y: backgroundY,
-        }}
-      />
-
+      
       <motion.div className="relative z-10 " style={{ y: textY }}>
         <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto">
@@ -133,7 +112,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-primary text-5xl md:text-7xl font-bold"
+                className="text-5xl md:text-7xl font-bold"
               >
                 Sahil Saw
               </motion.h1>
@@ -175,7 +154,6 @@ export default function Hero() {
                   <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 </Button>
               </Link>
-              
               <Link href="https://github.com/sahilsaw" target="_blank" rel="noopener noreferrer">
                 <Button
                   variant="outline"
@@ -203,7 +181,6 @@ export default function Hero() {
         </div>
         </div>
       </motion.div>
-
       <motion.div
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: -10 }}
@@ -219,16 +196,6 @@ export default function Hero() {
           <ChevronDown className="h-8 w-8" />
         </Link>
       </motion.div>
-
-      <div className="absolute inset-0 z-20 pointer-events-none">
-        <div
-          className="w-full h-full"
-          style={{
-            background:
-              "radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(var(--primary-rgb), 0.1) 0%, transparent 50%)",
-          }}
-        />
-      </div>
     </section>
   )
 }
