@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Moon, Sun } from "lucide-react"
+import { Menu, X, Moon, Sun, FileDown, Code2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
 
@@ -32,11 +32,11 @@ export default function Navbar() {
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
-    { name: "Education", href: "#education" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
-    { name: "Achievements", href: "#achievements" },
     { name: "Contact", href: "#contact" },
+    { name: "LeetCode", href: "https://leetcode.com/sahilsaw", icon: Code2, external: true },
+    { name: "Resume", href: "resume.pdf", icon: FileDown, download: true },
   ]
 
   return (
@@ -63,8 +63,11 @@ export default function Navbar() {
             >
               <Link
                 href={item.href}
-                className="text-sm font-medium transition-colors hover:text-primary relative group interactive"
+                className="text-sm font-medium transition-colors hover:text-primary relative group interactive flex items-center gap-1"
+                {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                {...(item.download ? { download: "" } : {})}
               >
+                {item.icon && <item.icon className="h-4 w-4" />}
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </Link>
@@ -124,9 +127,12 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className="text-lg font-medium py-2 transition-colors hover:text-primary block"
+                    className="text-lg font-medium py-2 transition-colors hover:text-primary block flex items-center gap-2"
                     onClick={() => setIsMenuOpen(false)}
+                    {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    {...(item.download ? { download: "" } : {})}
                   >
+                    {item.icon && <item.icon className="h-5 w-5" />}
                     {item.name}
                   </Link>
                 </motion.div>
