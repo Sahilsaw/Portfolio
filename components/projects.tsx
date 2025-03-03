@@ -33,6 +33,20 @@ export default function Projects() {
       ],
     },
     {
+      title: "EcoEngage",
+      description: "Built an AI-driven waste segregation platform",
+      image: "EcoEngage.png?height=600&width=800",
+      tags: ["Next","React", "Node.js", "PostgreSQL", "JWT"],
+      liveDemo: "https://ecoengagesih.vercel.app/",
+      github: "https://github.com/Sahilsaw/EcoEngage",
+      features: [
+        "Developed a multilingual waste segregation platform using React, Node.js, AI, and blockchain.",
+        "Partnered with MSMEs and governments to promote recycling and environmental awareness.",
+        "Improved waste categorization accuracy by 25% with AI and ensured secure transactions via blockchain.",
+        "Deployed on AWS with 99.8% uptime, scaling for 10,000+ users."
+      ],
+    },
+    {
       title: "Portfolio Website",
       description: "Personal portfolio website built with Next.js and Three.js",
       image: "/Portfolio-page.png?height=600&width=800",
