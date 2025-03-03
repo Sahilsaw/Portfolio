@@ -67,11 +67,11 @@ export default function Hero() {
       </div> */}
 
       {/* Grid Background */}
-      {/* <div className="absolute inset-0 grid grid-cols-[repeat(20,1fr)] grid-row[repeat(20,1fr)] opacity-[0.15]">
+      <div className="absolute inset-0 grid grid-cols-[repeat(20,1fr)] grid-row[repeat(20,1fr)] opacity-[0.15]">
         {[...Array(400)].map((_, i) => (
           <div key={i} className="border-[0.5px] border-primary/20" />
         ))}
-      </div> */}
+      </div>
 
       {/* Geometric Decorations */}
       {/* <motion.div
